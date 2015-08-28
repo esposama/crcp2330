@@ -1,5 +1,1 @@
-# crcp2330
-Work for Nand to Tetris 
-touch README.md
-git add README
-git commit -m "Adding initial README file."
+Amanda Esposito My work for NAND2tetris class crcp2330
