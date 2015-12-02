@@ -16,14 +16,16 @@ class SquareGame {
 
     // The square
     field Square square;
+    field Circle circle; 
 
     // The square's movement direction
     field int direction; // 0=none,1=up,2=down,3=left,4=right
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
-        let square = Square.new(0, 0, 100);
+        //let square = Square.new(0, 0, 100);
         let direction = 0;
+        let square = Circle.new(200, 200, 200);
 
         return this;
     }
@@ -31,6 +33,8 @@ class SquareGame {
     /** Deallocates the object's memory. */
     method void dispose() {
         do square.dispose();
+        do square1.dispose(); 
+        do circle.dispose(); 
         do Memory.deAlloc(this);
         return;
     }
