@@ -1,13 +1,9 @@
 class Main {
 	function void main() {
-	var Math math;  
-	do Output.printString("Press Q to get the Average."); 
-	do Output.println(); 
-	do Output.printString("Press P to Multiply two numbers."); 
-	do Output.println(); 
-	let math= Math.new(); 
-	do math.run(); 
-	do math.dispose(); 
+	var Calculator calculator;  
+	let calculator = Calculator.new(); 
+	do calculator.run(); 
+	do calculator.dispose(); 
 
 
 	return; 

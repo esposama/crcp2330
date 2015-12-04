@@ -1,0 +1,95 @@
+class Calculator { 
+	field Array a; 
+	field int i, x, y, sum, quotient, length, product; 
+
+	constructor Calculator new() {
+	    return this;
+	}
+
+	method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+
+	method void run() { 
+		var char key;
+	    var boolean exit;
+	    do Output.printString("Press Q to get the Average."); 
+	    do Output.println();
+		do Output.printString("Press P to Multiply two numbers."); 
+		do Output.println(); 
+		do Output.printString("Press W to Divide two numbers."); 
+		do Output.println();
+		do Output.printString("Press X to get the squart root of a number."); 
+		do Output.println();
+		do Output.printString("Press Z to Quit."); 
+		do Output.println(); 
+		while (key = 0) {
+	        let key = Keyboard.keyPressed();
+	        }
+		 if (key = 90) {
+	        let exit = true;
+	        }
+		if (key=81){ 
+			do getAverage(); 
+			} 
+		if (key=80){ 
+			do Mult(); 
+		}    
+		if (key=87){ 
+			do Divide(); 
+		} 
+		if (key=88){ 
+			do Abs(); 
+		}              
+	    return;
+	}
+
+	method void getAverage() { 
+		let length = Keyboard.readInt("How many numbers?"); 
+		let a = Array.new(length); 
+		let i = 0; 
+			while(i < length){ 
+				let a[i] = Keyboard.readInt("Enter the next number:  "); 
+				let sum= sum + a[i]; 
+				let i = i +1; 
+			}
+		do Output.printString("The average number is :  "); 
+		do Math.divide(sum, length); 
+		do Output.printInt(sum / length); 
+		do Output.println();
+		return; 
+	}
+
+	method void Mult(){ 
+		do Output.printString("Type in the numbers you want to multiply."); 
+		let x= Keyboard.readInt("Number 1:   "); 
+		let y= Keyboard.readInt("Number 2:   "); 
+		do Math.multiply(x,y); 
+		do Output.printString("The product is:   "); 
+		do Output.printInt( x * y ); 
+		do Output.println();
+		return; 
+	}
+	method void Divide(){ 
+		do Output.printString("Type in the numbers you want to divide."); 
+		let x= Keyboard.readInt("Number 1:   "); 
+		let y= Keyboard.readInt("Number 2:   "); 
+		do Math.divide(x,y); 
+		do Output.printString("The product is:   "); 
+		do Output.printInt( x / y ); 
+		do Output.println();
+		return; 
+	}
+	method void Abs(){ 
+		do Output.printString("Type in the number you want to find the square root of."); 
+		let x= Keyboard.readInt("Number 1:   "); 
+		do Math.sqrt(x); 
+		do Output.printString("The square root is:   "); 
+		do Output.printInt(x); 
+		do Output.println();
+		return; 
+	}
+
+} 
