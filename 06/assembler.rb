@@ -1,10 +1,20 @@
 #! /usr/bin/env ruby
-asm_filename = ARGV[0] 
-
-if (ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1 &&
-	File.exists?(ARGV[0]) && File.readable?(ARGV[0]) ) 
-	puts ARGV[0]
-	puts asm_filename
-else 
-	abort("Usage: ./assembler.rb Prog.asm") 
+def args_valid? 
+	ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1
 end 
+
+def is_reabable?(path)
+	File.readable?(path)
+end
+
+unless args_valid? 
+	abort("Usage: ./assembler.rb Prog.asm")
+end
+
+asm_filename = ARGV[0]
+
+unless is_reabable?(asm_filename)
+	abort("#{asm_filename} not found or is unreadable.")
+end 
+
+puts "The contents of #{asm_filename}"
