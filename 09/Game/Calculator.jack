@@ -1,18 +1,13 @@
 class Calculator { 
 	field Array a; 
-	field int i, x, y, sum, quotient, length, product; 
-	field Fraction a; 
-	field Fraction b; 
+	field int i, x, y, sum, quotient, length, product, remainder; 
+
 
 	constructor Calculator new() {
-		let a = Fraction.new(sum,length); 
-		let b = Fraction.new(x,y); 
 	    return this;
 	}
 
 	method void dispose() {
-		do a.dispose(); 
-		do b.dispose(); 
         do Memory.deAlloc(this);
         return;
     }
@@ -27,8 +22,6 @@ class Calculator {
 		do Output.println();
 		do Output.printString("Press X to get the squart root of a number."); 
 		do Output.println();
-		do Output.printString("Press Z to Quit."); 
-		do Output.println(); 
 		while (key = 0) {
 	        let key = Keyboard.keyPressed();
 	        }
@@ -60,10 +53,11 @@ class Calculator {
 				let i = i +1; 
 			}
 		do Output.printString("The average number is :  ");
-		//do Output.printInt(); 
-		do Math.divide(sum, length); 
-		//do a.reduce(); 
-		do a.print(); 
+		let quotient = Math.divide(sum, length); 
+		do Output.printInt(quotient); 
+		do Output.printString("   Remainder:   ");
+		let remainder = Math.multiply(quotient, length); 
+		do Output.printInt(sum - remainder); 
 		do Output.println();
 		return; 
 	}
@@ -79,28 +73,35 @@ class Calculator {
 		return; 
 	}
 	method void Divide(){ 
-		var int counter; 
 		do Output.printString("Type in the numbers you want to divide."); 
 		let x= Keyboard.readInt("Number 1:   "); 
-		let y= Keyboard.readInt("Number 2:   ");
-		do b.reduce(); 
-
+		let y= Keyboard.readInt("Number 2:   "); 
 		do Output.printString("The quotient is:   "); 
-		while ( ~(counter = 0) & (counter > 0) ) {
-			let counter = counter - y;
-		}
-		if (counter = 0) {
-			do Output.printInt(Math.divide(x,y)); 
-		} else {
-			do b.print(); 
-		} 
+		let quotient = Math.divide(x, y); 
+		do Output.printInt(quotient); 
+		do Output.printString("   Remainder:   ");
+		let remainder = Math.multiply(quotient, y); 
+		do Output.printInt(x- remainder); 
+		do Output.println(); 
 		return; 
 	}
 	method void Abs(){ 
+		var int answer,b; 
 		do Output.printString("Type in the number you want to find the square root of.         "); 
 		let x= Keyboard.readInt("Number 1:   "); 
 		do Output.printString("The square root is:   "); 
-		do Output.printInt(Math.sqrt(x)); 
+		let answer = Math.sqrt(x); 
+		let b= Math.multiply(answer,answer); 
+		if (b=answer) { 
+		do Output.printInt(answer); 
+		} else { 
+		do Output.printInt(answer); 
+		do Output.printString("   Remainder: sqrt of  ");
+		do Output.printInt(b- answer); 
+		do Output.pritnln(); 
+		}
+	
+
 		do Output.println();
 		return; 
 	}
