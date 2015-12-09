@@ -10,10 +10,8 @@ class Assembler
 	end
 
 	def assemble! 
-		@parser.parse.each {|instruction| hack_file << instruction << "/n" } 
+		@parser.parse.each {|instruction| @hack_file << instruction << "\n" } 
 		end 
-
-	end
 
 	def instructions_from_file 
 		lines = @asm_file.readlines 
