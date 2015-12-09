@@ -26,9 +26,9 @@ class Parser
 	end 
 
 	def assemble_c_command(instruction)
-		"1110000000000000"
+		command = "111" 
 	end 
-	
+
 	def command_type(instruction)
 		if instruction.start_with?("@")
 			:a_command

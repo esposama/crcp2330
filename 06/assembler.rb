@@ -25,10 +25,10 @@ def args_valid?
 	ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1 
 end 
 
-
 def is_readable?(path)
 	File.readable?(path)
 end 
+
 def hack_filename(asm_filename)
 	asm_basename = File.basename(asm_filename, '.asm')
 	path = File.split(asm_filename)[0] 
