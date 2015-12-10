@@ -28,14 +28,14 @@ class Parser
 
 	def assemble_c_command(instruction)
 		command = "111" 
-		if instruction.include?'='
-			command << @codez.comp(instruction.split('=')[-1]) 
+		if instruction.include? '='
+			command << @codez.comp(instruction.split('=')[1]) 
 			command << @codez.dest(instruction.split('=')[0]) 
 			command << '000' 
 		elsif instruction.include? ';' 
-			command << '000'
-			command << @codez.dest(instruction.split(';')[0]) 
-			command << @codez.jump(instruction.split(';')[-1]) 
+			command << @codez.comp(instruction.split(';')[0])
+			command << '000'  
+			command << @codez.jump(instruction.split(';')[1]) 
 		end 
 	end 
 
