@@ -1,8 +1,10 @@
+require_relative 'code'
 class Parser 
 
 	def initialize(assembly_instructions)
 		@assembly_instructions = assembly_instructions
 		@machine_instructions = []
+		@codez = Code.new()
 	end 
 
 	def parse 
@@ -20,18 +22,26 @@ class Parser
 		command = "0"
 		command << constant(instruction[1..-1]) 
 	end 
-
 	def constant(value)
 		"%015b" % value
 	end 
 
 	def assemble_c_command(instruction)
 		command = "111" 
+		if instruction.include?'='
+			command << @codez.comp(instruction.split('=')[-1]) 
+			command << @codez.dest(instruction.split('=')[0]) 
+			command << '000' 
+		elsif instruction.include? ';' 
+			command << '000'
+			command << @codez.dest(instruction.split(';')[0]) 
+			command << @codez.jump(instruction.split(';')[-1]) 
+		end 
 	end 
 
 	def command_type(instruction)
-		if instruction.start_with?("@")
-			:a_command
+		if instruction.start_with?("@") 
+			:a_command 
 		else 
 			:c_command 
 		end 
